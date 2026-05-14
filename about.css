@@ -1,0 +1,302 @@
+/* ================================================
+   ABOUT SECTION — about.css
+   Md. Abdullah Al-Rifat Portfolio
+   ================================================ */
+
+#about {
+  background: var(--bg-secondary);
+  padding: 6rem 2rem;
+  position: relative;
+}
+
+/* ── Section tag (label above heading) ── */
+.about-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.section-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 3rem;
+}
+
+.tag-line {
+  display: block;
+  width: 36px;
+  height: 2px;
+  background: var(--accent-cyan);
+}
+
+.tag-text {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+}
+
+/* ── Two-column grid ── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* ── LEFT: Bio ── */
+.about-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 1.8rem;
+  color: var(--text-primary);
+}
+
+.highlight-cyan  { color: var(--accent-cyan); }
+.highlight-amber { color: var(--accent-amber); }
+
+.about-bio {
+  font-family: var(--font-body);
+  font-size: 0.97rem;
+  color: var(--text-secondary);
+  line-height: 1.85;
+  margin-bottom: 1.2rem;
+}
+
+.about-bio strong {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* Inline tags inside bio text */
+.inline-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.inline-tag.cyan {
+  background: rgba(0, 229, 255, 0.1);
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0, 229, 255, 0.25);
+}
+
+.inline-tag.amber {
+  background: rgba(255, 171, 0, 0.1);
+  color: var(--accent-amber);
+  border: 1px solid rgba(255, 171, 0, 0.25);
+}
+
+/* ── Fact cards row ── */
+.about-facts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.fact-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  transition: var(--transition);
+}
+
+.fact-card:hover {
+  border-color: var(--accent-cyan);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 229, 255, 0.08);
+}
+
+.fact-num {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--accent-cyan);
+  line-height: 1;
+}
+
+.fact-num sup {
+  font-size: 0.75rem;
+}
+
+.fact-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* ── RIGHT: Info cards ── */
+.about-right {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.info-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.4rem 1.5rem;
+  transition: var(--transition);
+}
+
+.info-card:hover {
+  border-color: rgba(0, 229, 255, 0.2);
+}
+
+.info-card-title {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  margin-bottom: 1rem;
+}
+
+/* Contact list */
+.info-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.info-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+}
+
+.info-icon {
+  font-size: 0.85rem;
+  color: var(--accent-amber);
+  flex-shrink: 0;
+  width: 16px;
+  text-align: center;
+  margin-top: 1px;
+}
+
+.info-list a {
+  color: var(--text-secondary);
+  transition: var(--transition);
+  word-break: break-all;
+}
+
+.info-list a:hover {
+  color: var(--accent-cyan);
+}
+
+/* Language bars */
+.lang-row {
+  display: grid;
+  grid-template-columns: 52px 1fr 60px;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 0.7rem;
+}
+
+.lang-row:last-child { margin-bottom: 0; }
+
+.lang-name {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.lang-bar {
+  height: 4px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.lang-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-violet));
+  transition: width 1.2s ease;
+}
+
+.lang-fill.amber {
+  background: linear-gradient(90deg, var(--accent-amber), var(--accent-cyan));
+}
+
+.lang-level {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  text-align: right;
+  letter-spacing: 0.5px;
+}
+
+/* Research interest tags */
+.interest-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.interest-tags span {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(124, 77, 255, 0.1);
+  border: 1px solid rgba(124, 77, 255, 0.25);
+  color: #b39dff;
+  letter-spacing: 0.3px;
+  transition: var(--transition);
+}
+
+.interest-tags span:hover {
+  background: rgba(124, 77, 255, 0.2);
+  border-color: rgba(124, 77, 255, 0.5);
+}
+
+/* ── Scroll reveal animation ── */
+.about-left,
+.about-right {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.about-left.visible  { opacity: 1; transform: translateY(0); }
+.about-right.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.15s;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .about-facts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #about {
+    padding: 4rem 1.5rem;
+  }
+}

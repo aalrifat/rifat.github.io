@@ -1,0 +1,318 @@
+/* ================================================
+   RESEARCH SECTION — research.css
+   Md. Abdullah Al-Rifat Portfolio
+   ================================================ */
+
+#research {
+  background: var(--bg-primary);
+  padding: 6rem 2rem;
+}
+
+.research-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.research-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.research-intro {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  max-width: 680px;
+  margin-bottom: 3rem;
+}
+
+/* ── Scroll reveal wrapper ── */
+.pub-list,
+.research-areas {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.pub-list.visible { opacity: 1; transform: translateY(0); }
+.research-areas.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.15s;
+}
+
+/* ================================================
+   PUBLICATION CARDS
+   ================================================ */
+.pub-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.pub-card {
+  display: flex;
+  gap: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.pub-card:hover {
+  border-color: rgba(0, 229, 255, 0.25);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Left accent strip */
+.pub-card-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.8rem;
+  padding: 1.6rem 1.2rem;
+  background: rgba(0, 229, 255, 0.03);
+  border-right: 1px solid var(--border);
+  min-width: 72px;
+}
+
+.pub-number {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: rgba(0, 229, 255, 0.18);
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.pub-status {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+}
+
+.status-submitted {
+  background: rgba(255, 171, 0, 0.1);
+  border: 1px solid rgba(255, 171, 0, 0.3);
+  color: var(--accent-amber);
+}
+
+.status-published {
+  background: rgba(0, 255, 136, 0.1);
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  color: #00ff88;
+}
+
+/* Card body */
+.pub-card-body {
+  padding: 1.6rem 1.8rem;
+  flex: 1;
+}
+
+/* Topic tags */
+.pub-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.9rem;
+}
+
+.pub-tag {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.3px;
+}
+
+.pub-tag.t-cyan {
+  background: rgba(0, 229, 255, 0.08);
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  color: var(--accent-cyan);
+}
+
+.pub-tag.t-amber {
+  background: rgba(255, 171, 0, 0.08);
+  border: 1px solid rgba(255, 171, 0, 0.2);
+  color: var(--accent-amber);
+}
+
+.pub-tag.t-violet {
+  background: rgba(124, 77, 255, 0.08);
+  border: 1px solid rgba(124, 77, 255, 0.2);
+  color: #b39dff;
+}
+
+/* Title */
+.pub-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.5;
+  margin-bottom: 0.6rem;
+}
+
+/* Authors */
+.pub-authors {
+  font-size: 0.83rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.pub-authors strong {
+  color: var(--accent-cyan);
+  font-weight: 500;
+}
+
+/* Journal */
+.pub-journal {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.pub-journal em {
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.journal-icon { font-size: 0.8rem; }
+
+/* Tool pills */
+.pub-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tool-pill {
+  font-family: var(--font-mono);
+  font-size: 0.63rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  transition: var(--transition);
+}
+
+.tool-pill:hover {
+  color: var(--text-secondary);
+  border-color: rgba(255,255,255,0.15);
+}
+
+/* ================================================
+   RESEARCH AREAS GRID
+   ================================================ */
+.areas-title {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 1.4rem;
+}
+
+.areas-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.area-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.2rem;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle top accent line on hover */
+.area-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-violet));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+
+.area-card:hover::before { transform: scaleX(1); }
+
+.area-card:hover {
+  border-color: rgba(0, 229, 255, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+
+.area-icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+  line-height: 1;
+}
+
+.area-card h4 {
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.6rem;
+  line-height: 1.3;
+}
+
+.area-card p {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .areas-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  #research { padding: 4rem 1.5rem; }
+
+  .pub-card { flex-direction: column; }
+
+  .pub-card-left {
+    flex-direction: row;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 0.8rem 1.2rem;
+    min-width: unset;
+  }
+
+  .pub-status {
+    writing-mode: horizontal-tb;
+    transform: none;
+  }
+
+  .areas-grid { grid-template-columns: 1fr 1fr; }
+}

@@ -1,0 +1,637 @@
+/* ================================================
+   PORTFOLIO — Md. Abdullah Al-Rifat
+   style.css — Design System + Navbar
+   ================================================ */
+
+/* ── 1. CSS VARIABLES (your entire color & font system) ── */
+:root {
+  /* Colors */
+  --bg-primary:     #07080f;       /* Deep space black */
+  --bg-secondary:   #0d0f1e;       /* Slightly lighter dark */
+  --bg-card:        #111627;       /* Card backgrounds */
+
+  --accent-cyan:    #00e5ff;       /* Electric cyan (main accent) */
+  --accent-amber:   #ffab00;       /* Amber (secondary accent) */
+  --accent-violet:  #7c4dff;       /* Violet (highlight) */
+
+  --text-primary:   #f0f4ff;       /* Main text (near white) */
+  --text-secondary: #8892b0;       /* Muted text */
+  --text-muted:     #4a5568;       /* Very muted */
+
+  --border:         rgba(0, 229, 255, 0.12);  /* Subtle cyan border */
+  --border-hover:   rgba(0, 229, 255, 0.4);   /* Hover border */
+
+  /* Fonts */
+  --font-display:   'Syne', sans-serif;        /* Headings / logo */
+  --font-mono:      'Space Mono', monospace;   /* Code / accents */
+  --font-body:      'DM Sans', sans-serif;     /* Body text */
+
+  /* Sizes */
+  --nav-height:     70px;
+  --max-width:      1100px;
+  --radius:         8px;
+
+  /* Transitions */
+  --transition:     all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── 2. RESET & BASE ── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-height);
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ── 3. NAVBAR ── */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--nav-height);
+  z-index: 1000;
+  background: transparent;
+  transition: var(--transition);
+  border-bottom: 1px solid transparent;
+}
+
+/* Navbar becomes solid after scrolling (JS adds this class) */
+.navbar.scrolled {
+  background: rgba(7, 8, 15, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-container {
+  max-width: var(--max-width);
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--text-primary);
+  transition: var(--transition);
+}
+
+.nav-logo:hover {
+  color: var(--accent-cyan);
+}
+
+.nav-logo .accent {
+  color: var(--accent-cyan);
+}
+
+/* Desktop Links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-link {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  position: relative;
+  padding: 4px 0;
+  transition: var(--transition);
+}
+
+/* Animated underline on hover */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--accent-cyan);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--accent-cyan);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Active link */
+.nav-link.active {
+  color: var(--accent-cyan);
+}
+
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* ── 4. HAMBURGER (mobile) ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+/* Hamburger → X animation */
+.hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── 5. MOBILE MENU ── */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    gap: 0;
+    background: rgba(7, 8, 15, 0.97);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem 2rem;
+
+    /* Hidden by default */
+    transform: translateY(-120%);
+    opacity: 0;
+    pointer-events: none;
+    transition: var(--transition);
+  }
+
+  .nav-links.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .nav-link {
+    font-size: 0.9rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--border);
+    width: 100%;
+  }
+
+  .nav-link:last-child {
+    border-bottom: none;
+  }
+}
+
+/* ── 6. PLACEHOLDER SECTIONS (remove when real sections are added) ── */
+.section-placeholder {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px dashed var(--border);
+  padding-top: var(--nav-height);
+}
+
+.section-placeholder p {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+}
+
+/* Alternating background for placeholders so you can see sections */
+.section-placeholder:nth-child(even) {
+  background: var(--bg-secondary);
+}
+
+
+/* ================================================
+   HERO SECTION
+   ================================================ */
+
+#hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--bg-primary);
+  padding-top: var(--nav-height);
+}
+
+/* ── Canvas background ── */
+#batteryCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.75;
+}
+
+/* ── Hero container (two-column layout) ── */
+.hero-container {
+  position: relative;
+  z-index: 2;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 4rem;
+  width: 100%;
+}
+
+/* ── LEFT: Text ── */
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.hero-greeting {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--accent-cyan);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  animation: fadeInLeft 0.8s ease 0.3s both;
+}
+
+.hero-name {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -1px;
+  animation: fadeInLeft 0.8s ease 0.5s both;
+}
+
+.name-line {
+  color: var(--text-primary);
+}
+
+.accent-name {
+  color: var(--accent-cyan);
+  -webkit-text-stroke: 1px var(--accent-cyan);
+}
+
+/* ── Rotating role text ── */
+.hero-role {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: var(--font-mono);
+  font-size: clamp(0.85rem, 2vw, 1.05rem);
+  color: var(--text-secondary);
+  min-height: 2rem;
+  animation: fadeInLeft 0.8s ease 0.7s both;
+}
+
+.role-prefix {
+  color: var(--accent-amber);
+  font-size: 1.3rem;
+}
+
+.role-text {
+  color: var(--accent-amber);
+  font-weight: 700;
+}
+
+.role-cursor {
+  color: var(--accent-cyan);
+  animation: blink 0.8s step-end infinite;
+  font-weight: 300;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ── Affiliation badge ── */
+.hero-affiliation {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  letter-spacing: 0.5px;
+  animation: fadeInLeft 0.8s ease 0.9s both;
+}
+
+.aff-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-violet);
+  flex-shrink: 0;
+}
+
+/* ── CTA Buttons ── */
+.hero-btns {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  animation: fadeInLeft 0.8s ease 1.1s both;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.8rem;
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 1px;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--accent-cyan);
+  color: var(--bg-primary);
+  border: 2px solid var(--accent-cyan);
+}
+
+.btn-primary:hover {
+  background: transparent;
+  color: var(--accent-cyan);
+  box-shadow: 0 0 24px rgba(0, 229, 255, 0.35);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border: 2px solid var(--border-hover);
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent-amber);
+  color: var(--accent-amber);
+  box-shadow: 0 0 20px rgba(255, 171, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+/* ── Social Icons ── */
+.hero-socials {
+  display: flex;
+  gap: 1rem;
+  animation: fadeInLeft 0.8s ease 1.3s both;
+}
+
+.social-link {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-muted);
+  transition: var(--transition);
+}
+
+.social-link svg {
+  width: 18px;
+  height: 18px;
+}
+
+.social-link:hover {
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+  background: rgba(0, 229, 255, 0.06);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 16px rgba(0, 229, 255, 0.15);
+}
+
+/* ── RIGHT: Photo ── */
+.hero-photo-wrap {
+  position: relative;
+  width: 280px;
+  height: 360px;
+  flex-shrink: 0;
+  animation: fadeInRight 1s ease 0.6s both;
+}
+
+.photo-frame {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  z-index: 3;
+  border: 2px solid rgba(0, 229, 255, 0.35);
+  box-shadow:
+    0 0 30px rgba(0, 229, 255, 0.12),
+    0 8px 40px rgba(0, 0, 0, 0.5);
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  filter: brightness(1.03) contrast(1.05);
+  transition: transform 0.5s ease;
+}
+
+.photo-frame:hover .profile-img {
+  transform: scale(1.03);
+}
+
+/* ── Floating badges ── */
+.badge {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  z-index: 10;
+  white-space: nowrap;
+  backdrop-filter: blur(8px);
+  animation: float 4s ease-in-out infinite;
+}
+
+.badge-ml {
+  top: 10px;
+  right: -10px;
+  background: rgba(124, 77, 255, 0.2);
+  border: 1px solid rgba(124, 77, 255, 0.5);
+  color: #b39dff;
+  animation-delay: 0s;
+}
+
+.badge-mat {
+  bottom: 30px;
+  right: -20px;
+  background: rgba(0, 229, 255, 0.12);
+  border: 1px solid rgba(0, 229, 255, 0.4);
+  color: var(--accent-cyan);
+  animation-delay: 1.5s;
+}
+
+.badge-bat {
+  bottom: 10px;
+  left: -10px;
+  background: rgba(255, 171, 0, 0.12);
+  border: 1px solid rgba(255, 171, 0, 0.4);
+  color: var(--accent-amber);
+  animation-delay: 0.8s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px);   }
+  50%       { transform: translateY(-8px);  }
+}
+
+/* ── Scroll indicator ── */
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  z-index: 5;
+  animation: fadeIn 1s ease 2s both;
+}
+
+.scroll-indicator span {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.scroll-arrow {
+  width: 18px;
+  height: 18px;
+  border-right: 2px solid var(--accent-cyan);
+  border-bottom: 2px solid var(--accent-cyan);
+  transform: rotate(45deg);
+  animation: bounce 1.5s ease infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: rotate(45deg) translateY(0);   }
+  50%       { transform: rotate(45deg) translateY(5px); }
+}
+
+/* ── Shared keyframes ── */
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-15px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Hero Responsive ── */
+@media (max-width: 768px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 3rem;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  .hero-photo-wrap {
+    width: 220px;
+    height: 280px;
+    margin: 0 auto;
+    order: -1;
+  }
+
+  .photo-frame {
+    border-radius: 10px;
+  }
+
+  .hero-btns,
+  .hero-socials,
+  .hero-affiliation {
+    justify-content: center;
+  }
+
+  .battery-label {
+    font-size: 0.6rem;
+    right: 1rem;
+  }
+
+  .badge-mat { right: -5px; }
+  .badge-ml  { right: -5px; }
+}

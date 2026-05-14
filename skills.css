@@ -1,0 +1,263 @@
+/* ================================================
+   SKILLS SECTION — skills.css
+   Md. Abdullah Al-Rifat Portfolio
+   ================================================ */
+
+#skills {
+  background: var(--bg-secondary);
+  padding: 6rem 2rem;
+}
+
+.skills-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.skills-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 3rem;
+}
+
+/* ── Skill group (each category block) ── */
+.skill-group {
+  margin-bottom: 3rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.skill-group.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skill-group:nth-child(3) { transition-delay: 0.1s; }
+.skill-group:nth-child(4) { transition-delay: 0.2s; }
+.skill-group:nth-child(5) { transition-delay: 0.3s; }
+
+.skill-group-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 1.2rem;
+}
+
+.skill-group-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.skill-group-dot.cyan   { background: var(--accent-cyan);   box-shadow: 0 0 6px rgba(0,229,255,0.5); }
+.skill-group-dot.amber  { background: var(--accent-amber);  box-shadow: 0 0 6px rgba(255,171,0,0.5); }
+.skill-group-dot.violet { background: var(--accent-violet); box-shadow: 0 0 6px rgba(124,77,255,0.5); }
+
+/* ── Skill cards (tech/software row) ── */
+.skill-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.9rem;
+}
+
+.skill-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: var(--transition);
+}
+
+.skill-card:hover {
+  border-color: rgba(0, 229, 255, 0.25);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.skill-icon {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.skill-name {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* Skill progress bar */
+.skill-bar {
+  height: 3px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 0.3rem;
+}
+
+.skill-fill {
+  height: 100%;
+  width: 0%;                     /* starts at 0, animates to --w */
+  border-radius: 2px;
+  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Triggered by JS when visible */
+.skill-fill.animate {
+  width: var(--w);
+}
+
+.skill-fill.cyan {
+  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-violet));
+}
+
+.skill-fill.amber {
+  background: linear-gradient(90deg, var(--accent-amber), #ff6b35);
+}
+
+.skill-fill.violet {
+  background: linear-gradient(90deg, var(--accent-violet), var(--accent-cyan));
+}
+
+/* ── Library tags ── */
+.lib-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.lib-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition: var(--transition);
+  cursor: default;
+}
+
+.lib-tag:hover {
+  transform: translateY(-2px);
+}
+
+.t-cyan {
+  background: rgba(0, 229, 255, 0.08);
+  border-color: rgba(0, 229, 255, 0.25);
+  color: var(--accent-cyan);
+}
+.t-cyan:hover { background: rgba(0, 229, 255, 0.15); }
+
+.t-amber {
+  background: rgba(255, 171, 0, 0.08);
+  border-color: rgba(255, 171, 0, 0.25);
+  color: var(--accent-amber);
+}
+.t-amber:hover { background: rgba(255, 171, 0, 0.15); }
+
+.t-violet {
+  background: rgba(124, 77, 255, 0.1);
+  border-color: rgba(124, 77, 255, 0.3);
+  color: #b39dff;
+}
+.t-violet:hover { background: rgba(124, 77, 255, 0.2); }
+
+.t-muted {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--border);
+  color: var(--text-muted);
+}
+.t-muted:hover {
+  color: var(--text-secondary);
+  border-color: rgba(255,255,255,0.15);
+}
+
+/* ── Lab cards ── */
+.lab-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.9rem;
+}
+
+.lab-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.lab-card:hover {
+  border-color: rgba(124, 77, 255, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.lab-icon {
+  font-size: 1.6rem;
+}
+
+.lab-name {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* ── Bottom row (desktop + soft skills side by side) ── */
+.skill-bottom-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;
+}
+
+.skill-bottom-row.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skill-group-half {
+  margin-bottom: 0;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .skill-cards,
+  .lab-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  #skills { padding: 4rem 1.5rem; }
+
+  .skill-cards,
+  .lab-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .skill-bottom-row {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
